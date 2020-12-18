@@ -1,0 +1,12 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+.jumbotron{ 
+    background: transparent;
+}
+
+span.glyphicon {
+    color: rgb(255, 255, 255);
+}

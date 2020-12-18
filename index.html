@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slatkoteka - Beograd dostava</title>
+
+    <!-- Favicon link -->
+    <link rel="icon" type="image/x-icon" href="img/favico.png">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom style and script ref -->
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/navbarAndFooterStyle.css">
+
+    <!-- Navbar scroll -->
+    <script>
+        $(document).ready(function () {
+            var scrollTop = 0;
+            $(window).scroll(function () {
+                scrollTop = $(window).scrollTop();
+                $('.counter').html(scrollTop);
+                //176
+                if (scrollTop >= 176) {
+                    $('#global-nav').addClass('scrolled-nav');
+                    $('#global-nav').addClass('navbar-fixed-top');
+                    $('#logoKrofna').hide();
+                    $('#tekst1').css('margin-top', '17.3em');
+                } else if (scrollTop < 176) {
+                    $('#global-nav').removeClass('scrolled-nav');
+                    $('#global-nav').removeClass('navbar-fixed-top');
+                    $("#logoKrofna").show();
+                    $('#tekst1').css('margin-top', '0em');
+                }
+            });
+        });
+    </script>
+
+    <script>    
+        $(document).ready(function () {
+            var date = new Date();
+            var meseci = ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun', 'Jul', 'Avgust', 'Septembar', 'Oktobar', 'Novembar', 'Decembar'];
+            document.getElementById("datumFooter").innerHTML = meseci[date.getMonth()] + ', ' + date.getFullYear();
+        });
+    </script>
+
+    <script>
+        //768
+        $(document).ready(function () {
+            $(window).resize(function () {
+                if ($(window).width() < 752) {
+                    $('#meni').removeClass('dropdown');
+                    $('#meniLink').attr('href', "menu.html");
+                    $('#meniLink').removeClass('dropdown-toggle');
+                    $('#meniLink').attr('data-toggle', '');
+                } else {
+                    $('#meni').addClass('dropdown');
+                    $('#meniLink').attr('href', "#");
+                    $('#meniLink').addClass('dropdown-toggle');
+                    $('#meniLink').attr('data-toggle', 'dropdown');
+                }
+            });
+            if ($(window).width() < 752) {
+                $('#meni').removeClass('dropdown');
+                $('#meniLink').attr('href', "menu.html");
+                $('#meniLink').removeClass('dropdown-toggle');
+                $('#meniLink').attr('data-toggle', '');
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="global-nav" class="navbar navbar-default navbar-top">
+        <a id="logoKrofna" href="index.html">
+            <img src="img/slatkoteka-logo-krofna.png" alt="Krofna">
+        </a>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul id="navBarList" class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">Početna</a>
+                    </li>
+                    <li id="meni" class="dropdown">
+                        <a id="meniLink" class="dropdown-toggle" data-toggle="dropdown" href="#">Meni
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="menu.html">Asortiman</a>
+                            </li>
+                            <li>
+                                <a href="menu.html#akcije">Akcije</a>
+                            </li>
+                            <li>
+                                <a href="menu.html#nagrade">Nagrade</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="order.html">Naručivanje</a>
+                    </li>
+                    <li>
+                        <a href="aboutUs.html">O nama</a>
+                    </li>
+                    
+                    <li>
+                        <a href="galery.html">Galerija</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="tekst1" class="container">
+        <div class="jumbotron">
+            <p>Svakog dana – krofna dana! Pravimo po jedan unikatan ukus i dekoraciju. Izaberi svoju krofnu i započni dan sa osmehom! Potrebno je da najavite svoju porudžbinu bar 1 dan ranije i poručite bar 10 istih
+                krofni.
+            </p>
+        </div>
+    </div>
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div id="home" class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="img/slajder4.jpg" id="slajd1" alt="Krofne" style="width: 100%; margin: auto;">
+            </div>
+
+            <div class="item">
+                <img src="img/slajder2.jpg" alt="slajd2" style="width: 100%; margin: auto;">
+            </div>
+
+            <div class="item">
+                <img src="img/slajder3.jpg" alt="slajd3" style="width: 100%; margin: auto;">
+            </div>
+            <div class="item">
+                <img src="img/slajder1.jpg" alt="slajd3" style="width: 100%; margin: auto;">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+
+    <div class="container-fluid">
+        <div id="picBoxes" class="text-center" style="margin-top: 7em">
+            
+               
+                    <img src="img/location.jpg" alt="Instagram" class="img-rounded" width="300px" height="380px">
+                    <br>
+                    <p>Posetite nas!</p>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <a id="instalink" target="_blank" href="https://www.instagram.com/slatkoteka/">
+            <img id="instaicon" src="img/instaicon.png" alt="Instagram">
+        </a>
+        <a id="fblink" target="_blank" href="https://www.facebook.com/Slatkoteka/">
+            <img id="fbicon" src="img/fbicon.png" alt="Facebook">
+        </a>
+        <p id="datumFooter" class="text-center"></p>
+    </footer>
+
+</body>
+
+</html>

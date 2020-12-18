@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Naručivanje - Slatkoteka - Beograd dostava</title>
+
+    <!-- Favicon link -->
+    <link rel="icon" type="image/x-icon" href="img/favico.png">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/orderStyle.css">
+    <link rel="stylesheet" href="css/navbarAndFooterStyle.css">
+
+    <!-- Navbar scroll -->
+    <script>
+        $(document).ready(function () {
+            var scrollTop = 0;
+            $(window).scroll(function () {
+                scrollTop = $(window).scrollTop();
+                $('.counter').html(scrollTop);
+                //176
+                if (scrollTop >= 176) {
+                    $('#global-nav').addClass('scrolled-nav');
+                    $('#global-nav').addClass('navbar-fixed-top');
+                    $('#logoKrofna').hide();
+                    $('#forma').css('margin-top', '22em');
+                } else if (scrollTop < 176) {
+                    $('#global-nav').removeClass('scrolled-nav');
+                    $('#global-nav').removeClass('navbar-fixed-top');
+                    $("#logoKrofna").show();
+                    $('#forma').css('margin-top', '6em');
+                }
+            });
+        });
+    </script>
+
+    <!-- Custom form validation -->
+    <script>
+        $(document).ready(function () {
+            $('#contact-form').on('submit', function (e) {
+                if (!e.isDefaultPrevented()) {
+                    e.preventDefault();
+                    var messageText = '';
+                    var tekst = $('#telefonInput').val();
+                    if (isNaN(tekst)) {
+                        messageText += 'Broj telefona unesite koristeći samo brojeve bez znakova!';
+                    } else if (tekst.length < 9) {
+                        messageText += '\n' + 'Broj telefona nije pravilno unet!';
+                    }
+                    /*
+                    var tekst2 = $('#numberInput').val();
+                    if (!(/^[0-9].*$/.test(tekst2))) {
+                        messageText += '\n' + 'Broj zgrade/kuće nije validan!';
+                    }
+                    var alertBox;
+                    if (messageText) {
+                        alertBox = '<div class="alert ' + 'alert-danger' + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                        $("#messages").html(alertBox);
+                    } else {
+                        alertBox = '<div class="alert ' + 'alert-success' + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + 'Uspesno ste narucili!' + '</div>';
+                        $("#messages").html(alertBox);
+                        // ovde bi isao ajax post
+                    }
+                */
+                }
+            });
+        });
+    </script>
+
+    <script>
+        //768
+        $(document).ready(function () {
+            $(window).resize(function () {
+                if ($(window).width() < 752) {
+                    $('#meni').removeClass('dropdown');
+                    $('#meniLink').attr('href', "menu.html");
+                    $('#meniLink').removeClass('dropdown-toggle');
+                    $('#meniLink').attr('data-toggle', '');
+                } else {
+                    $('#meni').addClass('dropdown');
+                    $('#meniLink').attr('href', "#");
+                    $('#meniLink').addClass('dropdown-toggle');
+                    $('#meniLink').attr('data-toggle', 'dropdown');
+                }
+            });
+            if ($(window).width() < 752) {
+                $('#meni').removeClass('dropdown');
+                $('#meniLink').attr('href', "menu.html");
+                $('#meniLink').removeClass('dropdown-toggle');
+                $('#meniLink').attr('data-toggle', '');
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var date = new Date();
+            var meseci = ['Januar', 'Februar', 'Mart', 'April', 'Maj', 'Jun', 'Jul', 'Avgust', 'Septembar',
+                'Oktobar', 'Novembar', 'Decembar'
+            ];
+            document.getElementById("datumFooter").innerHTML = meseci[date.getMonth()] + ', ' + date.getFullYear();
+        });
+    </script>
+
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="global-nav" class="navbar navbar-default navbar-top">
+        <a id="logoKrofna" href="index.html">
+            <img src="img/slatkoteka-logo-krofna.png" alt="Krofna">
+        </a>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul id="navBarList" class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">Početna</a>
+                    </li>
+                    <li id="meni" class="dropdown">
+                        <a id="meniLink" class="dropdown-toggle" data-toggle="dropdown" href="#">Meni
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="menu.html">Asortiman</a>
+                            </li>
+                            <li>
+                                <a href="menu.html#akcije">Akcije</a>
+                            </li>
+                            <li>
+                                <a href="menu.html#nagrade">Nagrade</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="order.html">Naručivanje</a>
+                    </li>
+                    <li>
+                        <a href="aboutUs.html">O nama</a>
+                    </li>
+                  
+                    <li>
+                        <a href="galery.html">Galerija</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div id="forma" class="container" style="margin-top: 6em">
+        <form id="contact-form">
+            <div class="col-sm-6">
+                <p>Ime *</p>
+                <input class="form-control" id="name" name="name" placeholder="Ime" type="text" oninvalid="this.setCustomValidity('Unesite ime!')"
+                    oninput="setCustomValidity('')" required>
+                <p>Prezime *</p>
+                <input class="form-control" id="surname" name="surname" placeholder="Prezime" type="text" oninvalid="this.setCustomValidity('Unesite prezime!')"
+                    oninput="setCustomValidity('')" required>
+                <p>Kontakt telefon *</p>
+                <input id="telefonInput" class="form-control" id="phone" name="phone" placeholder="Telefon" type="text" oninvalid="this.setCustomValidity('Unesite broj telefona!')"
+                    oninput="setCustomValidity('')" required>
+                
+            </div>
+            <div class="col-sm-6">
+                <p>Ulica *</p>
+                <input class="form-control" id="street" name="street" placeholder="Ulica" type="text" oninvalid="this.setCustomValidity('Unesite naziv ulice!')"
+                    oninput="setCustomValidity('')" required>
+                <p>Broj *</p>
+                <input id="numberInput" class="form-control" id="number" name="number" placeholder="Broj" type="text" oninvalid="this.setCustomValidity('Unesite broj zgrade!')"
+                    oninput="setCustomValidity('')" required>
+               
+            </div>
+            
+            <div id="radioGroup" class="container">
+                
+                <p>Odaberite način plaćanja *</p>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio" checked="checked">Gotovinski prilikom dostave</label>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio">Karticom prilikom dostave</label>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio">Platnom karticom - online</label>
+            </div>
+            <div class="container">
+                <p>Vaša porudžbina *</p>
+                <div id="messages" style="width: 80%;"></div>
+                <textarea name="textarea" id="opisNarudzbine" cols="30" rows="10" style="resize: none; width: 70%; border-radius: 2%;" oninvalid="this.setCustomValidity('Unesite porudžbinu!')"
+                    oninput="setCustomValidity('')" required></textarea>
+                <button id="sendbtn" class="btn pull-right" type="submit"  style="margin-top: 10em; width: 10%;  margin-right: 6em;">Naruči</button>
+            </div>
+
+        </form>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <a id="instalink" target="_blank" href="https://www.instagram.com/slatkoteka/">
+            <img id="instaicon" src="img/instaicon.png" alt="Instagram">
+        </a>
+        <a id="fblink" target="_blank" href="https://www.facebook.com/Slatkoteka/">
+            <img id="fbicon" src="img/fbicon.png" alt="Facebook">
+        </a>
+        <p id="datumFooter" class="text-center"></p>
+    </footer>
+
+
+</body>
+
+</html>
